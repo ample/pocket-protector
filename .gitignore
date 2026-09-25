@@ -1,0 +1,21 @@
+# Recorded audio and transcripts (private)
+recordings/
+
+# Vector DB — contains transcript text
+chroma/
+
+# Python
+env/
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Secrets
+.env
+.env.*
+*.pem
+*.key
+
+# macOS
+.DS_Store
