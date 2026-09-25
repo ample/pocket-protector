@@ -1,0 +1,19 @@
+# Hardware
+
+3D-printable parts, exported from Fusion as `.3mf`.
+
+| File | Purpose |
+|---|---|
+| `enclosure.3mf` | Main enclosure |
+| `plug_test.3mf` | Test print for plug fit |
+
+## Parts
+
+- Raspberry Pi (model: TODO)
+- ESP32-C3 Super Mini
+- PowerBoost board with FM5324HJ1 boost IC + battery
+- Microphone (TODO)
+- Momentary push button
+- 2N2222 NPN transistor + 1 kΩ resistor
+
+See [controller/README.md](../controller/README.md) for wiring.
