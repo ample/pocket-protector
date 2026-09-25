@@ -14,16 +14,25 @@ source env/bin/activate
 pip install -r mac/requirements.txt
 ```
 
+Speaker labeling uses [`pyannote/speaker-diarization-3.1`](https://huggingface.co/pyannote/speaker-diarization-3.1). It's a gated model, so you have to download it once with a Hugging Face account. After that it runs offline.
+
+1. Accept the terms on [speaker-diarization-3.1](https://huggingface.co/pyannote/speaker-diarization-3.1) and [segmentation-3.0](https://huggingface.co/pyannote/segmentation-3.0).
+2. Create a read token at huggingface.co/settings/tokens, then run `huggingface-cli login` (or export `HF_TOKEN`) before you first start `processor.py`.
+
 Paths are hardcoded to `~/Workspace/transcriber` (`BASE_DIR` in `processor.py`, `DB_DIR` in `ask.py`). Edit them if you cloned the repo elsewhere.
 
 ## processor.py
 
 A daemon that polls `recordings/` every 5 s. It uses marker files as its state machine:
 
-1. **`DONE`, no `TRANSCRIBED`:** ffmpeg concatenates the chunks, applies `loudnorm`, and resamples to 16 kHz → `session.wav`. Whisper (`mlx-community/whisper-large-v3-turbo`) then writes `transcript.txt` and timestamped `segments.json`, and the `TRANSCRIBED` marker is added.
-2. **`TRANSCRIBED`, no `INDEXED`:** segments are grouped into ~180-word chunks with start/end times. They're embedded with `nomic-embed-text` via Ollama and upserted into the Chroma collection `sessions` in `chroma/`. Then the `INDEXED` marker is added.
+1. **`DONE`, no `TRANSCRIBED`:** ffmpeg concatenates the chunks, applies `loudnorm`, and resamples to 16 kHz → `session.wav`. Whisper (`mlx-community/whisper-large-v3-turbo`) transcribes with word timestamps, and pyannote works out who spoke when. Each word goes to the speaker whose turn overlaps it most, and Whisper segments are split wherever the speaker changes. This writes `segments.json` (`{start, end, speaker, text}`) and `transcript.txt` (one `Speaker N: …` paragraph per turn), then adds the `TRANSCRIBED` marker. Speakers are numbered in order of first appearance within each session, so labels don't carry across sessions.
+2. **`TRANSCRIBED`, no `INDEXED`:** segments are grouped into ~180-word chunks with start/end times and speaker-prefixed lines. They're embedded with `nomic-embed-text` via Ollama and upserted into the Chroma collection `sessions` in `chroma/`. The session's old chunks are deleted first. Then the `INDEXED` marker is added.
 
-Failures are logged and retried on the next poll. To reprocess a session, delete its marker file(s).
+Failures are logged and retried on the next poll. To reprocess a session, delete its marker file(s). Sessions transcribed before speaker labeling was added need both `TRANSCRIBED` and `INDEXED` removed to pick up speakers:
+
+```bash
+rm recordings/*/TRANSCRIBED recordings/*/INDEXED
+```
 
 ```bash
 python mac/processor.py

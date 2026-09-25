@@ -45,6 +45,9 @@ def main() -> None:
     prompt = (
         "Answer the question using only the transcript excerpts below. "
         "Cite the session name and timestamp range for anything you use. "
+        "Lines are prefixed with speaker labels (Speaker 1, Speaker 2, ...); say who said "
+        "what when it matters. Labels are per session: Speaker 1 in one session is not "
+        "necessarily the same person as Speaker 1 in another. "
         "If the excerpts don't contain the answer, say so plainly.\n\n"
         f"EXCERPTS:\n{context}\n\nQUESTION: {question}"
     )

@@ -7,7 +7,7 @@ A push-button voice recorder with searchable, fully local memory. Press a button
                                                           │
                                    processor.py (polls every 5s)
                                    1. ffmpeg: concat + loudnorm → session.wav
-                                   2. Whisper (MLX) → transcript.txt + segments.json
+                                   2. Whisper (MLX) + pyannote speakers → transcript.txt + segments.json
                                    3. Ollama embeddings → Chroma vector DB
                                                           │
                           ask.py "question" → top-6 retrieval → llama3.1:8b answer with citations
@@ -34,7 +34,7 @@ recordings/YYYYMMDD-HHMMSS/
 ├── DONE                  # Pi: recording finished and synced
 ├── session.wav           # Mac: concatenated + normalized
 ├── transcript.txt        # Mac: full text
-├── segments.json         # Mac: [{start, end, text}, ...]
+├── segments.json         # Mac: [{start, end, speaker, text}, ...]
 ├── TRANSCRIBED           # Mac: stage 1 complete
 └── INDEXED               # Mac: stage 2 complete
 ```
