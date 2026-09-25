@@ -12,7 +12,7 @@
 - Raspberry Pi (model: TODO)
 - ESP32-C3 Super Mini
 - PowerBoost board with FM5324HJ1 boost IC + battery
-- Microphone (TODO)
+- INMP441 I2S MEMS microphone
 - Momentary push button
 - 2N2222 NPN transistor + 1 kΩ resistor
 

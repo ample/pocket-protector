@@ -1,0 +1,16 @@
+[Unit]
+Description=Pocket uploader
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=__USER__
+WorkingDirectory=__HOME__
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=__PI_DIR__/.env
+ExecStart=/usr/bin/python3 __PI_DIR__/uploader.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

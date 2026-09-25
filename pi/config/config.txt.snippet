@@ -1,0 +1,11 @@
+# Lines added to /boot/firmware/config.txt (Raspberry Pi OS Bookworm).
+# Append under the [all] section. Everything else in the file is stock.
+
+[all]
+# Free physical pin 10 (GPIO15 / UART RX) for the ESP32 control line.
+enable_uart=0
+
+# --- I2S MEMS microphone (INMP441) ---
+dtparam=i2s=on
+# Drives the INMP441 as ALSA card "sndrpigooglevoi" (recorder.py MIC_DEVICE).
+dtoverlay=googlevoicehat-soundcard

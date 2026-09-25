@@ -1,0 +1,14 @@
+[Unit]
+Description=Pocket recorder
+After=sound.target
+
+[Service]
+User=__USER__
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/python3 __PI_DIR__/recorder.py
+Restart=always
+RestartSec=2
+WorkingDirectory=__HOME__
+
+[Install]
+WantedBy=multi-user.target
