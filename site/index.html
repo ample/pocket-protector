@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pocket Protector — Press a button. Remember everything.</title>
+<meta name="description" content="Build a push-button voice recorder whose recordings are transcribed, labeled by speaker and made searchable on your own Mac.">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=Sora:wght@600;700;800&amp;display=swap">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+<div class="wrap">
+<a class="logo" href="index.html"><img src="assets/logo.png" alt="Pocket Protector home" width="173" height="52"></a>
+<nav class="nav" aria-label="Primary">
+<a href="hardware.html">Hardware</a>
+<a href="pi.html">Raspberry Pi</a>
+<a href="mac.html">Mac</a>
+<a href="use.html">Record &amp; ask</a>
+<a class="btn btn-sm btn-primary nav-cta" href="hardware.html">Build one</a>
+</nav>
+</div>
+</header>
+
+<main>
+
+<section class="hero hero-home">
+<div class="wrap hero-grid">
+<div class="stack" style="--gap: 28px">
+<div class="pill"><span class="dot"></span>Open-source DIY build · 100% local AI</div>
+<h1 class="display display-xl">Press a button.<span class="accent">Remember everything.</span></h1>
+<p class="lede" style="max-width: 520px">Pocket Protector is a push-button voice recorder you build yourself. Every recording is transcribed, labeled by speaker, and made searchable on your own Mac. Ask it what was said, and it answers with the exact moment.</p>
+<div class="btn-row">
+<a class="btn btn-lg btn-primary" href="hardware.html">Start the build guide</a>
+<a class="btn btn-lg" href="https://github.com/ample/pocket-protector">View on GitHub</a>
+</div>
+</div>
+
+<svg viewBox="0 0 720 600" width="100%" role="img" aria-label="Illustration of the Pocket Protector device with its record button, status LED and microphone">
+<rect x="10" y="26" width="290" height="148" rx="20" fill="#FFFFFF" stroke="#0E1726" stroke-width="3"/>
+<text x="32" y="58" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600" fill="#34405A" letter-spacing="1.5">YOU ASK</text>
+<text x="32" y="88" font-family="Sora, sans-serif" font-size="18" font-weight="700" fill="#0E1726">What did we decide about</text>
+<text x="32" y="112" font-family="Sora, sans-serif" font-size="18" font-weight="700" fill="#0E1726">the deck material?</text>
+<rect x="32" y="130" width="212" height="28" rx="14" fill="#E8F0FE"/>
+<circle cx="48" cy="144" r="5" fill="#1766E8"/>
+<text x="60" y="149" font-family="IBM Plex Mono, monospace" font-size="12" fill="#0F4FB8">answer cites session + time</text>
+<path d="M149.4,335 A110,110 0 0 0 149.4,445" fill="none" stroke="#1766E8" stroke-width="5" stroke-linecap="round"/>
+<path d="M119.1,317.5 A145,145 0 0 0 119.1,462.5" fill="none" stroke="#1766E8" stroke-width="5" stroke-linecap="round" opacity="0.55"/>
+<path d="M88.8,300 A180,180 0 0 0 88.8,480" fill="none" stroke="#1766E8" stroke-width="5" stroke-linecap="round" opacity="0.25"/>
+<g transform="translate(40 40)">
+<ellipse cx="330" cy="478" rx="230" ry="46" fill="#0E1726" opacity="0.08"/>
+<g stroke="#0E1726" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+<polygon points="126.8,250 334.6,370 334.6,480 126.8,360" fill="#F2F5FA"/>
+<polygon points="334.6,370 507.8,270 507.8,380 334.6,480" fill="#D9E2EF"/>
+<polygon points="300,150 507.8,270 334.6,370 126.8,250" fill="#FFFFFF"/>
+<ellipse cx="308.7" cy="255" rx="67" ry="39" fill="#0F4FB8"/>
+<path d="M241.7,233 L241.7,255 A67,39 0 0 0 375.7,255 L375.7,233 Z" fill="#0F4FB8"/>
+<ellipse cx="308.7" cy="233" rx="67" ry="39" fill="#1766E8"/>
+<ellipse cx="438.6" cy="270" rx="16" ry="9" fill="#22A652"/>
+<ellipse cx="352" cy="330" rx="8" ry="4.6" fill="#0E1726"/>
+</g>
+<ellipse cx="290" cy="222" rx="30" ry="11" fill="#6FA1F2"/>
+<ellipse cx="438.6" cy="270" rx="30" ry="17" fill="#22A652" opacity="0.18"/>
+<g transform="matrix(0.866 0.5 0 1 126.8 250)" fill="#0E1726">
+<circle cx="90" cy="55" r="5.5"/><circle cx="110" cy="55" r="5.5"/><circle cx="104.1" cy="69.1" r="5.5"/><circle cx="90" cy="75" r="5.5"/><circle cx="75.9" cy="69.1" r="5.5"/><circle cx="70" cy="55" r="5.5"/><circle cx="75.9" cy="40.9" r="5.5"/><circle cx="90" cy="35" r="5.5"/><circle cx="104.1" cy="40.9" r="5.5"/>
+</g>
+<g transform="matrix(0.866 -0.5 0 1 334.6 370)"><rect x="70" y="42" width="60" height="22" rx="11" fill="#0E1726"/></g>
+</g>
+<g stroke="#0E1726" stroke-width="2.5" fill="none"><path d="M372,262 L470,152"/><path d="M478.6,310 L560,262"/><path d="M244,410 L170,520"/></g>
+<circle cx="372" cy="262" r="6" fill="#FFFFFF" stroke="#0E1726" stroke-width="3"/>
+<circle cx="478.6" cy="310" r="6" fill="#FFFFFF" stroke="#0E1726" stroke-width="3"/>
+<circle cx="244" cy="410" r="6" fill="#FFFFFF" stroke="#0E1726" stroke-width="3"/>
+<rect x="430" y="90" width="210" height="62" rx="16" fill="#FFFFFF" stroke="#0E1726" stroke-width="3"/>
+<text x="450" y="118" font-family="Sora, sans-serif" font-size="17" font-weight="700" fill="#0E1726">Record button</text>
+<text x="450" y="139" font-family="IBM Plex Mono, monospace" font-size="12" fill="#34405A">ESP32-C3 · GPIO 4</text>
+<rect x="530" y="200" width="176" height="62" rx="16" fill="#FFFFFF" stroke="#0E1726" stroke-width="3"/>
+<text x="550" y="228" font-family="Sora, sans-serif" font-size="17" font-weight="700" fill="#0E1726">Status LED</text>
+<text x="550" y="249" font-family="IBM Plex Mono, monospace" font-size="12" fill="#34405A">Pi · GPIO 27</text>
+<rect x="30" y="520" width="200" height="62" rx="16" fill="#FFFFFF" stroke="#0E1726" stroke-width="3"/>
+<text x="50" y="548" font-family="Sora, sans-serif" font-size="17" font-weight="700" fill="#0E1726">INMP441 mic</text>
+<text x="50" y="569" font-family="IBM Plex Mono, monospace" font-size="12" fill="#34405A">I2S · 16 kHz mono</text>
+</svg>
+</div>
+</section>
+
+<section class="stats" aria-label="By the numbers">
+<div class="wrap">
+<div><div class="stat-value">1</div><div class="stat-label">button to press</div></div>
+<div><div class="stat-value">60 s</div><div class="stat-label">audio chunks, synced as you go</div></div>
+<div><div class="stat-value">5 s</div><div class="stat-label">between checks for new sessions</div></div>
+<div><div class="stat-value">~180</div><div class="stat-label">words per searchable chunk</div></div>
+<div><div class="stat-value">6</div><div class="stat-label">cited excerpts behind every answer</div></div>
+<div><div class="stat-value good">0</div><div class="stat-label">cloud AI services</div></div>
+</div>
+</section>
+
+<section class="section">
+<div class="wrap stack" style="--gap: 48px">
+<div class="stack measure" style="--gap: 14px">
+<div class="eyebrow">How it works</div>
+<h2 class="h2">From click to answer, on hardware you own.</h2>
+<p class="body">The device records. Your Mac does the thinking. The two talk over your private Tailscale network, and the audio never goes anywhere else.</p>
+</div>
+<div class="panel" style="padding: 32px 0 8px">
+<div class="diagram-scroll">
+<svg viewBox="0 0 1120 260" width="100%" role="img" aria-label="Pipeline: device sends a pulse to the Raspberry Pi, which syncs over Tailscale to a Mac, which answers questions">
+<g stroke-dasharray="8 8" stroke="#1766E8" stroke-width="3"><line x1="205" y1="150" x2="302" y2="150"/><line x1="510" y1="150" x2="608" y2="150"/><line x1="828" y1="150" x2="902" y2="150"/></g>
+<polygon points="302,143 314,150 302,157" fill="#1766E8"/><polygon points="608,143 620,150 608,157" fill="#1766E8"/><polygon points="902,143 914,150 902,157" fill="#1766E8"/>
+<rect x="205" y="104" width="100" height="28" rx="14" fill="#FFFFFF" stroke="#0E1726" stroke-width="2"/><text x="255" y="123" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600" fill="#0E1726">GPIO pulse</text>
+<rect x="513" y="104" width="96" height="28" rx="14" fill="#FFFFFF" stroke="#0E1726" stroke-width="2"/><text x="561" y="123" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600" fill="#0E1726">Tailscale</text>
+<rect x="826" y="104" width="80" height="28" rx="14" fill="#FFFFFF" stroke="#0E1726" stroke-width="2"/><text x="866" y="123" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600" fill="#0E1726">ask.py</text>
+<g transform="translate(-23.1 17.7) scale(0.42)">
+<g stroke="#0E1726" stroke-width="9" stroke-linejoin="round">
+<polygon points="126.8,250 334.6,370 334.6,480 126.8,360" fill="#FFFFFF"/>
+<polygon points="334.6,370 507.8,270 507.8,380 334.6,480" fill="#D9E2EF"/>
+<polygon points="300,150 507.8,270 334.6,370 126.8,250" fill="#FFFFFF"/>
+<path d="M241.7,233 L241.7,255 A67,39 0 0 0 375.7,255 L375.7,233 Z" fill="#0F4FB8"/>
+<ellipse cx="308.7" cy="233" rx="67" ry="39" fill="#1766E8"/>
+<ellipse cx="438.6" cy="270" rx="18" ry="10" fill="#22A652"/>
+</g>
+<g transform="matrix(0.866 0.5 0 1 126.8 250)" fill="#0E1726"><circle cx="90" cy="55" r="7"/><circle cx="112" cy="55" r="7"/><circle cx="68" cy="55" r="7"/><circle cx="90" cy="33" r="7"/><circle cx="90" cy="77" r="7"/></g>
+</g>
+<g stroke="#0E1726" stroke-width="4" stroke-linejoin="round">
+<rect x="320" y="95" width="160" height="110" rx="10" fill="#CFE0FA"/>
+<rect x="480" y="120" width="22" height="24" fill="#FFFFFF"/><rect x="480" y="154" width="22" height="24" fill="#FFFFFF"/>
+<rect x="340" y="130" width="46" height="46" rx="4" fill="#0E1726"/>
+<rect x="400" y="134" width="28" height="38" rx="3" fill="#FFFFFF"/>
+<rect x="336" y="220" width="58" height="30" rx="5" fill="#FFFFFF"/>
+</g>
+<rect x="334" y="104" width="112" height="12" rx="2" fill="#0E1726"/>
+<circle cx="365" cy="235" r="7" fill="#0E1726"/>
+<path d="M365,206 L365,220" stroke="#0E1726" stroke-width="3"/>
+<g stroke="#0E1726" stroke-width="4" stroke-linejoin="round">
+<rect x="640" y="80" width="160" height="112" rx="10" fill="#0E1726"/>
+<path d="M620,196 L820,196 L806,216 L634,216 Z" fill="#D9E2EF"/>
+</g>
+<rect x="656" y="98" width="60" height="8" rx="4" fill="#7FA8F5"/><rect x="656" y="116" width="110" height="8" rx="4" fill="#9FB0C8"/><rect x="656" y="134" width="88" height="8" rx="4" fill="#9FB0C8"/><rect x="656" y="152" width="70" height="8" rx="4" fill="#6FD597"/>
+<rect x="940" y="82" width="140" height="42" rx="18" fill="#1766E8" stroke="#0E1726" stroke-width="4"/>
+<rect x="958" y="99" width="100" height="8" rx="4" fill="#FFFFFF"/>
+<rect x="920" y="136" width="180" height="84" rx="18" fill="#FFFFFF" stroke="#0E1726" stroke-width="4"/>
+<rect x="938" y="154" width="140" height="8" rx="4" fill="#BBC6D6"/><rect x="938" y="170" width="110" height="8" rx="4" fill="#BBC6D6"/>
+<rect x="938" y="190" width="100" height="18" rx="9" fill="#E8F0FE"/><circle cx="950" cy="199" r="4" fill="#1766E8"/><rect x="960" y="196" width="66" height="6" rx="3" fill="#7FA8F5"/>
+</svg>
+</div>
+<div class="grid grid-4" style="padding: 8px 32px 24px">
+<div class="stack" style="--gap: 8px"><h3 class="h3" style="font-size: 20px">1 · Press</h3><p class="small">An always-on ESP32-C3 reads the button and sends the Pi a 150 ms pulse to start or stop.</p></div>
+<div class="stack" style="--gap: 8px"><h3 class="h3" style="font-size: 20px">2 · Record</h3><p class="small">The Pi captures 16 kHz mono in one-minute chunks, then rsyncs the finished session to your Mac.</p></div>
+<div class="stack" style="--gap: 8px"><h3 class="h3" style="font-size: 20px">3 · Understand</h3><p class="small">Whisper transcribes, pyannote labels who spoke, and Ollama embeds it into a local Chroma index.</p></div>
+<div class="stack" style="--gap: 8px"><h3 class="h3" style="font-size: 20px">4 · Ask</h3><p class="small">llama3.1:8b answers from the six closest excerpts and cites the session and m:ss range.</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="wrap stack" style="--gap: 40px">
+<h2 class="h2 measure">Built for the conversations you'll want back.</h2>
+<div class="grid grid-3">
+<div class="card">
+<div class="card-media">
+<svg viewBox="0 0 320 180" width="100%" role="img" aria-label="Circular ripple around a pressed button">
+<circle cx="160" cy="92" r="84" fill="none" stroke="#1766E8" stroke-width="3" opacity="0.2"/>
+<circle cx="160" cy="92" r="66" fill="none" stroke="#1766E8" stroke-width="3" opacity="0.45"/>
+<circle cx="160" cy="92" r="46" fill="#1766E8" stroke="#0E1726" stroke-width="5"/>
+<ellipse cx="146" cy="76" rx="18" ry="9" fill="#6FA1F2"/>
+<g stroke="#0E1726" stroke-width="5" stroke-linecap="round"><line x1="60" y1="40" x2="74" y2="52"/><line x1="48" y1="92" x2="66" y2="92"/><line x1="60" y1="144" x2="74" y2="132"/><line x1="260" y1="40" x2="246" y2="52"/><line x1="272" y1="92" x2="254" y2="92"/><line x1="260" y1="144" x2="246" y2="132"/></g>
+</svg>
+</div>
+<div class="card-body card-body-lg">
+<h3 class="card-title">One press to capture</h3>
+<p class="card-text">No app, no phone, no wake word. Click to start, click to stop. Triple-click to power on, hold to shut down.</p>
+</div>
+</div>
+<div class="card">
+<div class="card-media">
+<svg viewBox="0 0 320 180" width="100%" role="img" aria-label="Waveform split into three speaker segments">
+<rect x="18" y="12" width="84" height="26" rx="13" fill="#1766E8"/><text x="60" y="30" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600" fill="#FFFFFF">Speaker 1</text>
+<rect x="114" y="12" width="84" height="26" rx="13" fill="#0E1726"/><text x="156" y="30" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600" fill="#FFFFFF">Speaker 2</text>
+<rect x="210" y="12" width="84" height="26" rx="13" fill="#1B7F3B"/><text x="252" y="30" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600" fill="#FFFFFF">Speaker 3</text>
+<g fill="#1766E8"><rect x="20" y="100" width="6" height="20" rx="3"/><rect x="30" y="90" width="6" height="40" rx="3"/><rect x="40" y="78" width="6" height="64" rx="3"/><rect x="50" y="95" width="6" height="30" rx="3"/><rect x="60" y="70" width="6" height="80" rx="3"/><rect x="70" y="84" width="6" height="52" rx="3"/><rect x="80" y="92" width="6" height="36" rx="3"/><rect x="90" y="75" width="6" height="70" rx="3"/><rect x="100" y="98" width="6" height="24" rx="3"/></g>
+<g fill="#0E1726"><rect x="116" y="95" width="6" height="30" rx="3"/><rect x="126" y="82" width="6" height="56" rx="3"/><rect x="136" y="65" width="6" height="90" rx="3"/><rect x="146" y="79" width="6" height="62" rx="3"/><rect x="156" y="90" width="6" height="40" rx="3"/><rect x="166" y="73" width="6" height="74" rx="3"/><rect x="176" y="93" width="6" height="34" rx="3"/><rect x="186" y="100" width="6" height="20" rx="3"/><rect x="196" y="88" width="6" height="44" rx="3"/></g>
+<g fill="#1B7F3B"><rect x="212" y="88" width="6" height="44" rx="3"/><rect x="222" y="76" width="6" height="68" rx="3"/><rect x="232" y="85" width="6" height="50" rx="3"/><rect x="242" y="67" width="6" height="86" rx="3"/><rect x="252" y="91" width="6" height="38" rx="3"/><rect x="262" y="80" width="6" height="60" rx="3"/><rect x="272" y="96" width="6" height="28" rx="3"/><rect x="282" y="86" width="6" height="48" rx="3"/><rect x="292" y="99" width="6" height="22" rx="3"/></g>
+<line x1="14" y1="166" x2="306" y2="166" stroke="#0E1726" stroke-width="2"/>
+</svg>
+</div>
+<div class="card-body card-body-lg">
+<h3 class="card-title">Knows who said what</h3>
+<p class="card-text">pyannote splits every session by speaker, so transcripts read like a script: Speaker 1, Speaker 2, and so on.</p>
+</div>
+</div>
+<div class="card">
+<div class="card-media">
+<svg viewBox="0 0 320 180" width="100%" role="img" aria-label="Magnifier highlighting one line of a transcript">
+<rect x="14" y="64" width="232" height="30" rx="10" fill="#FFFFFF" stroke="#1766E8" stroke-width="3"/>
+<g fill="#A9B6C9"><rect x="24" y="20" width="170" height="10" rx="5"/><rect x="24" y="44" width="200" height="10" rx="5"/><rect x="24" y="108" width="186" height="10" rx="5"/><rect x="24" y="132" width="140" height="10" rx="5"/><rect x="24" y="156" width="176" height="10" rx="5"/></g>
+<rect x="26" y="74" width="120" height="10" rx="5" fill="#1766E8"/><rect x="154" y="74" width="60" height="10" rx="5" fill="#7FA8F5"/>
+<circle cx="238" cy="92" r="42" fill="#FFFFFF" fill-opacity="0.4" stroke="#0E1726" stroke-width="7"/>
+<line x1="268" y1="122" x2="298" y2="154" stroke="#0E1726" stroke-width="12" stroke-linecap="round"/>
+</svg>
+</div>
+<div class="card-body card-body-lg">
+<h3 class="card-title">Search by meaning</h3>
+<p class="card-text">Ask in your own words. Answers come only from your recordings, with the session and timestamp to check them against.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section-tint">
+<div class="wrap split split-7-5" style="gap: clamp(32px, 5vw, 56px)">
+<svg viewBox="0 0 680 930" width="100%" role="img" aria-label="Exploded view: lid with button, ESP32-C3 controller, Raspberry Pi with microphone, PowerBoost and battery, enclosure base" style="max-height: 820px">
+<g stroke="#8A96A8" stroke-width="2" stroke-dasharray="6 8"><line x1="111.4" y1="138" x2="111.4" y2="720"/><line x1="423.2" y1="158" x2="423.2" y2="740"/><line x1="284.6" y1="238" x2="284.6" y2="820"/></g>
+<g stroke="#0E1726" stroke-width="2" fill="none"><line x1="440" y1="120" x2="470" y2="120"/><line x1="400" y1="300" x2="470" y2="300"/><line x1="420" y1="450" x2="470" y2="450"/><line x1="410" y1="610" x2="470" y2="610"/><line x1="440" y1="790" x2="470" y2="790"/></g>
+<g stroke="#0E1726" stroke-width="5" stroke-linejoin="round">
+<polygon points="111.4,720 284.6,820 284.6,910 111.4,810" fill="#F2F5FA"/>
+<polygon points="284.6,820 423.2,740 423.2,830 284.6,910" fill="#D9E2EF"/>
+<polygon points="250,640 423.2,740 284.6,820 111.4,720" fill="#FFFFFF"/>
+</g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 250 640)"><rect x="14" y="14" width="172" height="132" rx="6" fill="#DCE4F0" stroke="#0E1726" stroke-width="3" vector-effect="non-scaling-stroke"/></g>
+<g transform="matrix(0.866 0.5 0 1 111.4 720)" fill="#0E1726"><circle cx="70" cy="45" r="5"/><circle cx="88" cy="45" r="5"/><circle cx="52" cy="45" r="5"/><circle cx="70" cy="27" r="5"/><circle cx="70" cy="63" r="5"/><circle cx="83" cy="32" r="5"/><circle cx="57" cy="58" r="5"/><circle cx="83" cy="58" r="5"/><circle cx="57" cy="32" r="5"/></g>
+<g transform="matrix(0.866 -0.5 0 1 284.6 820)"><rect x="60" y="34" width="54" height="20" rx="10" fill="#0E1726"/></g>
+<g transform="translate(0 7) matrix(0.866 0.5 -0.866 0.5 250 500)" fill="#0E1726"><rect x="20" y="36" width="120" height="96" rx="12"/><rect x="150" y="46" width="42" height="64" rx="4"/></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 250 500)" stroke="#0E1726" stroke-width="3.5">
+<rect x="20" y="36" width="120" height="96" rx="12" fill="#FFFFFF" vector-effect="non-scaling-stroke"/>
+<rect x="20" y="60" width="120" height="16" fill="#1766E8" vector-effect="non-scaling-stroke"/>
+<rect x="150" y="46" width="42" height="64" rx="4" fill="#3F4B5E" vector-effect="non-scaling-stroke"/>
+<rect x="160" y="60" width="18" height="18" fill="#0E1726" vector-effect="non-scaling-stroke"/>
+</g>
+<g transform="translate(0 7) matrix(0.866 0.5 -0.866 0.5 250 350)" fill="#0E1726"><rect x="10" y="20" width="180" height="120" rx="8"/></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 250 350)" stroke="#0E1726" stroke-width="3.5">
+<rect x="10" y="20" width="180" height="120" rx="8" fill="#CFE0FA" vector-effect="non-scaling-stroke"/>
+<rect x="24" y="28" width="140" height="12" fill="#0E1726" vector-effect="non-scaling-stroke"/>
+<rect x="70" y="62" width="40" height="40" rx="3" fill="#0E1726" vector-effect="non-scaling-stroke"/>
+<rect x="122" y="66" width="24" height="32" rx="2" fill="#FFFFFF" vector-effect="non-scaling-stroke"/>
+<rect x="170" y="52" width="26" height="24" fill="#FFFFFF" vector-effect="non-scaling-stroke"/>
+<rect x="170" y="90" width="26" height="24" fill="#FFFFFF" vector-effect="non-scaling-stroke"/>
+<rect x="18" y="104" width="38" height="28" rx="3" fill="#FFFFFF" vector-effect="non-scaling-stroke"/>
+<circle cx="37" cy="118" r="7" fill="#0E1726" vector-effect="non-scaling-stroke"/>
+</g>
+<g transform="translate(0 6) matrix(0.866 0.5 -0.866 0.5 250 200)" fill="#0E1726"><rect x="20" y="24" width="64" height="48" rx="4"/><rect x="112" y="48" width="44" height="44" rx="6"/></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 250 200)" stroke="#0E1726" stroke-width="3.5">
+<rect x="20" y="24" width="64" height="48" rx="4" fill="#0F4FB8" vector-effect="non-scaling-stroke"/>
+<rect x="36" y="34" width="26" height="26" fill="#0E1726" vector-effect="non-scaling-stroke"/>
+<rect x="12" y="38" width="12" height="18" rx="3" fill="#D9E2EF" vector-effect="non-scaling-stroke"/>
+<rect x="112" y="48" width="44" height="44" rx="6" fill="#FFFFFF" vector-effect="non-scaling-stroke"/>
+<circle cx="134" cy="70" r="14" fill="#1766E8" vector-effect="non-scaling-stroke"/>
+<rect x="60" y="112" width="18" height="12" rx="3" fill="#0E1726" vector-effect="non-scaling-stroke"/>
+<rect x="100" y="114" width="40" height="9" rx="4" fill="#E2C08D" vector-effect="non-scaling-stroke"/>
+</g>
+<g stroke="#0E1726" stroke-width="5" stroke-linejoin="round">
+<polygon points="111.4,120 284.6,220 284.6,238 111.4,138" fill="#F2F5FA"/>
+<polygon points="284.6,220 423.2,140 423.2,158 284.6,238" fill="#D9E2EF"/>
+<polygon points="250,40 423.2,140 284.6,220 111.4,120" fill="#FFFFFF"/>
+<path d="M218.3,114 L218.3,130 A49,28.3 0 0 0 316.3,130 L316.3,114 Z" fill="#0F4FB8"/>
+<ellipse cx="267.3" cy="114" rx="49" ry="28.3" fill="#1766E8"/>
+<ellipse cx="371.2" cy="140" rx="11" ry="6.4" fill="#22A652"/>
+</g>
+<ellipse cx="254" cy="106" rx="20" ry="8" fill="#6FA1F2"/>
+<text x="480" y="114" font-family="Sora, sans-serif" font-size="17" font-weight="700" fill="#0E1726">Lid + button</text><text x="480" y="136" font-family="IBM Plex Mono, monospace" font-size="12" fill="#34405A">enclosure.3mf</text>
+<text x="480" y="294" font-family="Sora, sans-serif" font-size="17" font-weight="700" fill="#0E1726">ESP32-C3 Super Mini</text><text x="480" y="316" font-family="IBM Plex Mono, monospace" font-size="12" fill="#34405A">switch · 2N2222 · 1 kΩ</text>
+<text x="480" y="444" font-family="Sora, sans-serif" font-size="17" font-weight="700" fill="#0E1726">Raspberry Pi</text><text x="480" y="466" font-family="IBM Plex Mono, monospace" font-size="12" fill="#34405A">+ INMP441 I2S mic</text>
+<text x="480" y="604" font-family="Sora, sans-serif" font-size="17" font-weight="700" fill="#0E1726">PowerBoost + battery</text><text x="480" y="626" font-family="IBM Plex Mono, monospace" font-size="12" fill="#34405A">FM5324HJ1 boost IC</text>
+<text x="480" y="784" font-family="Sora, sans-serif" font-size="17" font-weight="700" fill="#0E1726">Enclosure base</text><text x="480" y="806" font-family="IBM Plex Mono, monospace" font-size="12" fill="#34405A">3D-printed · .3mf</text>
+</svg>
+<div class="stack" style="--gap: 24px">
+<div class="eyebrow">What's inside</div>
+<h2 class="h2">Five layers. Off-the-shelf parts.</h2>
+<p class="body">A tiny always-on controller handles the button and the power. The Pi only runs when you need it, and shuts itself down cleanly before the power is cut.</p>
+<ul class="spec-list">
+<li><span>Raspberry Pi</span><span>[PI MODEL]</span></li>
+<li><span>ESP32-C3 Super Mini</span><span>Button + power control</span></li>
+<li><span>INMP441 MEMS mic</span><span>I2S audio in</span></li>
+<li><span>PowerBoost + battery</span><span>5V, switched by the ESP32</span></li>
+<li><span>Button, 2N2222, 1 kΩ</span><span>The whole interface</span></li>
+</ul>
+<a class="btn" href="hardware.html" style="align-self: flex-start">See wiring and parts →</a>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="wrap stack" style="--gap: 40px">
+<div class="section-head">
+<div class="stack" style="--gap: 14px">
+<div class="eyebrow">Build guide</div>
+<h2 class="h2">Yours in four steps.</h2>
+</div>
+<p class="small" style="font-size: 17px; max-width: 420px">Each step ends with a quick check, so you know it works before you move on.</p>
+</div>
+<div class="grid grid-4">
+<a class="card" href="hardware.html">
+<div class="card-media" style="padding: 16px">
+<svg viewBox="0 0 220 130" width="100%" aria-hidden="true">
+<polygon points="90,14 130,14 122,34 98,34" fill="#0E1726"/><rect x="104" y="34" width="12" height="12" fill="#0E1726"/>
+<g stroke="#0E1726" stroke-width="4"><rect x="40" y="96" width="140" height="18" rx="4" fill="#FFFFFF"/><rect x="50" y="78" width="120" height="18" rx="4" fill="#FFFFFF"/><rect x="60" y="60" width="100" height="18" rx="4" fill="#1766E8"/></g>
+<line x1="110" y1="46" x2="110" y2="58" stroke="#1766E8" stroke-width="4" stroke-dasharray="3 3"/>
+</svg>
+</div>
+<div class="card-body" style="padding: 24px; gap: 10px">
+<div class="kicker kicker-sm">STEP 01</div>
+<div class="card-title card-title-sm">Build the hardware</div>
+<div class="small">Print the case, wire the controller, flash the ESP32.</div>
+</div>
+</a>
+<a class="card" href="pi.html">
+<div class="card-media" style="padding: 16px">
+<svg viewBox="0 0 220 130" width="100%" aria-hidden="true">
+<g stroke="#0E1726" stroke-width="4" stroke-linejoin="round"><rect x="40" y="22" width="130" height="88" rx="8" fill="#CFE0FA"/><rect x="170" y="40" width="18" height="20" fill="#FFFFFF"/><rect x="170" y="70" width="18" height="20" fill="#FFFFFF"/><rect x="62" y="54" width="36" height="36" rx="3" fill="#0E1726"/><rect x="110" y="58" width="22" height="28" rx="2" fill="#FFFFFF"/></g>
+<rect x="52" y="30" width="96" height="10" rx="2" fill="#0E1726"/>
+</svg>
+</div>
+<div class="card-body" style="padding: 24px; gap: 10px">
+<div class="kicker kicker-sm">STEP 02</div>
+<div class="card-title card-title-sm">Set up the Pi</div>
+<div class="small">Enable the mic, link to your Mac, install the services.</div>
+</div>
+</a>
+<a class="card" href="mac.html">
+<div class="card-media" style="padding: 16px">
+<svg viewBox="0 0 220 130" width="100%" aria-hidden="true">
+<g stroke="#0E1726" stroke-width="4" stroke-linejoin="round"><rect x="50" y="16" width="120" height="84" rx="8" fill="#0E1726"/><path d="M34,104 L186,104 L176,118 L44,118 Z" fill="#D9E2EF"/></g>
+<rect x="64" y="32" width="44" height="7" rx="3" fill="#7FA8F5"/><rect x="64" y="48" width="84" height="7" rx="3" fill="#9FB0C8"/><rect x="64" y="64" width="66" height="7" rx="3" fill="#9FB0C8"/><rect x="64" y="80" width="50" height="7" rx="3" fill="#6FD597"/>
+</svg>
+</div>
+<div class="card-body" style="padding: 24px; gap: 10px">
+<div class="kicker kicker-sm">STEP 03</div>
+<div class="card-title card-title-sm">Set up the Mac</div>
+<div class="small">Install the models and start the processor.</div>
+</div>
+</a>
+<a class="card" href="use.html">
+<div class="card-media" style="padding: 16px">
+<svg viewBox="0 0 220 130" width="100%" aria-hidden="true">
+<rect x="80" y="14" width="116" height="36" rx="16" fill="#1766E8" stroke="#0E1726" stroke-width="4"/><rect x="96" y="28" width="76" height="8" rx="4" fill="#FFFFFF"/>
+<rect x="24" y="60" width="150" height="58" rx="16" fill="#FFFFFF" stroke="#0E1726" stroke-width="4"/><rect x="40" y="76" width="112" height="8" rx="4" fill="#A9B6C9"/><rect x="40" y="94" width="72" height="8" rx="4" fill="#7FA8F5"/>
+</svg>
+</div>
+<div class="card-body" style="padding: 24px; gap: 10px">
+<div class="kicker kicker-sm">STEP 04</div>
+<div class="card-title card-title-sm">Record &amp; ask</div>
+<div class="small">Learn the gestures and query your memory.</div>
+</div>
+</a>
+</div>
+</div>
+</section>
+
+<div class="wrap">
+<section class="privacy split split-5-6" style="gap: clamp(32px, 5vw, 56px)">
+<div class="stack" style="--gap: 22px">
+<div class="eyebrow"><span class="dot"></span>Private by design</div>
+<h2>Your conversations never leave the house.</h2>
+<ul>
+<li>Transcription, speaker labels and answers all run on your Mac.</li>
+<li>The Pi hands audio over Tailscale with SSH keys.</li>
+<li>Recordings, transcripts and .env files are git-ignored.</li>
+<li>After one gated model download, it works offline.</li>
+</ul>
+</div>
+<svg viewBox="0 0 520 320" width="100%" role="img" aria-label="House containing the device, the Pi and a Mac, with a crossed-out cloud outside">
+<path d="M40,140 L260,34 L480,140 L480,300 L40,300 Z" fill="#16223A" stroke="#7FA8F5" stroke-width="4" stroke-linejoin="round"/>
+<path d="M436,62 a16,16 0 0 1 6,-30 a22,22 0 0 1 42,4 a14,14 0 0 1 4,26 Z" fill="#16223A" stroke="#8A96A8" stroke-width="4" stroke-linejoin="round"/>
+<line x1="430" y1="20" x2="498" y2="74" stroke="#F07A6A" stroke-width="5" stroke-linecap="round"/>
+<g stroke="#6FD597" stroke-width="3" stroke-dasharray="6 6"><line x1="172" y1="228" x2="213" y2="228"/><line x1="317" y1="228" x2="358" y2="228"/></g>
+<text x="337" y="200" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="#B7C4D8">Tailscale</text>
+<g stroke="#0E1726" stroke-width="4" stroke-linejoin="round">
+<rect x="80" y="196" width="90" height="62" rx="12" fill="#F2F5FA"/>
+<circle cx="114" cy="227" r="16" fill="#1766E8"/>
+<rect x="215" y="198" width="100" height="60" rx="8" fill="#CFE0FA"/>
+<rect x="238" y="220" width="28" height="28" rx="2" fill="#0E1726"/>
+<rect x="348" y="248" width="114" height="10" rx="4" fill="#D9E2EF"/>
+</g>
+<circle cx="150" cy="210" r="5" fill="#22A652"/>
+<rect x="225" y="204" width="76" height="8" fill="#0E1726"/>
+<rect x="360" y="184" width="90" height="64" rx="6" fill="#0E1726" stroke="#7FA8F5" stroke-width="3"/>
+<rect x="372" y="198" width="40" height="6" rx="3" fill="#7FA8F5"/><rect x="372" y="212" width="62" height="6" rx="3" fill="#9FB0C8"/><rect x="372" y="226" width="30" height="6" rx="3" fill="#6FD597"/>
+<text x="125" y="284" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="13" fill="#FFFFFF">button</text>
+<text x="265" y="284" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="13" fill="#FFFFFF">recorder</text>
+<text x="405" y="284" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="13" fill="#FFFFFF">your Mac</text>
+</svg>
+</section>
+</div>
+
+</main>
+
+<footer class="site-footer">
+<div class="wrap" style="padding-block: 48px">
+<a class="logo" href="index.html"><img src="assets/logo.png" alt="Pocket Protector" width="133" height="40"></a>
+<div class="links">
+<span>Open source</span>
+<a href="https://github.com/ample/pocket-protector">GitHub</a>
+<a href="hardware.html">Build guide</a>
+</div>
+</div>
+</footer>
+
+</body>
+</html>

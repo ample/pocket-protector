@@ -23,6 +23,7 @@ The repo is organized by where the code runs.
 | [`pi/`](pi/) | Raspberry Pi | Records chunked audio sessions and syncs them to the Mac |
 | [`mac/`](mac/) | Mac (Apple Silicon) | Transcribes, indexes, and answers questions |
 | [`hardware/`](hardware/) | 3D printer | Enclosure files and parts list |
+| [`site/`](site/) | Any static host | Setup microsite: a step-by-step build guide |
 
 Each directory has its own README with setup steps.
 
