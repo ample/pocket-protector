@@ -6,7 +6,7 @@ import time
 from datetime import datetime
 from pathlib import Path
 
-from gpiozero import Button, LED
+from gpiozero import Button, DigitalOutputDevice
 
 
 MIC_DEVICE = "plughw:sndrpigooglevoi"
@@ -17,8 +17,11 @@ CHUNK_SECONDS = 60
 # Raspberry Pi physical pin 10 = BCM GPIO15
 SIGNAL_GPIO = 15
 
-# Existing recording indicator LED
-LED_GPIO = 27
+# Status lines read by the ESP32, which drives the button's RGB LED.
+# Physical pin 13 = BCM GPIO27: HIGH while recording
+# Physical pin 11 = BCM GPIO17: HIGH while the recorder is ready
+RECORDING_GPIO = 27
+READY_GPIO = 17
 
 # Pulse lengths sent by the ESP32:
 # ~0.150 s = record toggle
@@ -34,7 +37,8 @@ signal_line = Button(
     bounce_time=0.01,
 )
 
-led = LED(LED_GPIO)
+recording_line = DigitalOutputDevice(RECORDING_GPIO)
+ready_line = DigitalOutputDevice(READY_GPIO)
 
 record_proc = None
 session_dir = None
@@ -71,7 +75,7 @@ def start_recording():
 
     record_proc = subprocess.Popen(cmd)
 
-    led.on()
+    recording_line.on()
 
 
 def stop_recording():
@@ -79,7 +83,7 @@ def stop_recording():
 
     if record_proc is None or record_proc.poll() is not None:
         record_proc = None
-        led.off()
+        recording_line.off()
         print("Not currently recording.", flush=True)
         return
 
@@ -101,7 +105,7 @@ def stop_recording():
             record_proc.wait()
 
     record_proc = None
-    led.off()
+    recording_line.off()
 
     if session_dir is not None:
         done_file = session_dir / "DONE"
@@ -126,6 +130,8 @@ def request_shutdown():
     shutting_down = True
     print("Shutdown requested.", flush=True)
 
+    ready_line.off()
+
     # Finish the current WAV and create DONE before Linux shuts down.
     if record_proc is not None and record_proc.poll() is None:
         stop_recording()
@@ -148,6 +154,7 @@ def request_shutdown():
             flush=True,
         )
         shutting_down = False
+        ready_line.on()
 
 
 def on_signal_pressed():
@@ -182,7 +189,8 @@ def cleanup(*_args):
     if record_proc is not None and record_proc.poll() is None:
         stop_recording()
 
-    led.off()
+    recording_line.off()
+    ready_line.off()
     raise SystemExit(0)
 
 
@@ -192,14 +200,15 @@ signal_line.when_released = on_signal_released
 signal.signal(signal.SIGINT, cleanup)
 signal.signal(signal.SIGTERM, cleanup)
 
-led.off()
+recording_line.off()
+ready_line.on()
 
 print(
     "Recorder ready on BCM GPIO15 / physical pin 10.",
     flush=True,
 )
 print(
-    "Single click toggles recording; long press requests shutdown.",
+    "Single click toggles recording; 3 s hold requests shutdown.",
     flush=True,
 )
 

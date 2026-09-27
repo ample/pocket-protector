@@ -13,7 +13,8 @@
 - ESP32-C3 Super Mini
 - PowerBoost board with FM5324HJ1 boost IC + battery
 - INMP441 I2S MEMS microphone
-- Momentary push button
+- ChromaTek 19 mm momentary push button with WS2812 RGB LED (19 mm panel hole)
+- 330 Ω resistor (LED data line)
 - 2N2222 NPN transistor + 1 kΩ resistor
 
 See [controller/README.md](../controller/README.md) for wiring.

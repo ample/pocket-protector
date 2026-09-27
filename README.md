@@ -19,7 +19,7 @@ The repo is organized by where the code runs.
 
 | Directory | Runs on | What it does |
 |---|---|---|
-| [`controller/`](controller/) | ESP32-C3 | Button gestures, record/shutdown pulses to the Pi, PowerBoost power control |
+| [`controller/`](controller/) | ESP32-C3 | Button gestures, status LED, record/shutdown pulses to the Pi, PowerBoost power control |
 | [`pi/`](pi/) | Raspberry Pi | Records chunked audio sessions and syncs them to the Mac |
 | [`mac/`](mac/) | Mac (Apple Silicon) | Transcribes, indexes, and answers questions |
 | [`hardware/`](hardware/) | 3D printer | Enclosure files and parts list |

@@ -86,29 +86,30 @@
 <div class="card-body">
 <div class="kicker kicker-sm">SINGLE CLICK</div>
 <h3 class="card-title">Start or stop recording</h3>
-<p class="card-text">Click once to start a new session, and again to end it. The recording LED shows when you're live.</p>
+<p class="card-text">Click once to start a new session, and again to end it. The button glows green when it's ready and red while you're live.</p>
 </div>
 </div>
 <div class="card">
 <div class="card-media">
-<svg viewBox="0 0 320 150" width="100%" role="img" aria-label="Three clicks power on the Pi">
-<circle cx="34" cy="75" r="20" fill="#1766E8" stroke="#0E1726" stroke-width="4"/><circle cx="80" cy="75" r="20" fill="#1766E8" stroke="#0E1726" stroke-width="4"/><circle cx="126" cy="75" r="20" fill="#1766E8" stroke="#0E1726" stroke-width="4"/>
+<svg viewBox="0 0 320 150" width="100%" role="img" aria-label="Hold for 3 seconds to power on the Pi">
+<rect x="10" y="50" width="130" height="50" rx="25" fill="#1766E8" stroke="#0E1726" stroke-width="5"/>
+<text x="75" y="82" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="15" font-weight="600" fill="#FFFFFF">3 s</text>
 <path d="M160,75 L190,75" stroke="#0E1726" stroke-width="4" stroke-linecap="round"/><polygon points="188,67 202,75 188,83" fill="#0E1726"/>
 <path d="M232,52 A36,36 0 1 0 280,52" fill="none" stroke="#1B7F3B" stroke-width="7" stroke-linecap="round"/>
 <line x1="256" y1="30" x2="256" y2="74" stroke="#1B7F3B" stroke-width="7" stroke-linecap="round"/>
 </svg>
 </div>
 <div class="card-body">
-<div class="kicker kicker-sm">TRIPLE CLICK</div>
+<div class="kicker kicker-sm">HOLD WHILE OFF</div>
 <h3 class="card-title">Power on</h3>
-<p class="card-text">Switches on the PowerBoost's 5V so the Pi boots. Give it a moment to start its services.</p>
+<p class="card-text">Switches on the PowerBoost's 5V so the Pi boots. The button pulses amber while it starts up, then turns green when it's ready.</p>
 </div>
 </div>
 <div class="card">
 <div class="card-media">
-<svg viewBox="0 0 320 150" width="100%" role="img" aria-label="Hold for 2.5 seconds and release to shut down; power is cut 15 seconds later">
+<svg viewBox="0 0 320 150" width="100%" role="img" aria-label="Hold for 3 seconds to shut down; power is cut 15 seconds later">
 <rect x="10" y="50" width="130" height="50" rx="25" fill="#1766E8" stroke="#0E1726" stroke-width="5"/>
-<text x="75" y="82" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="15" font-weight="600" fill="#FFFFFF">2.5 s</text>
+<text x="75" y="82" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="15" font-weight="600" fill="#FFFFFF">3 s</text>
 <path d="M160,75 L190,75" stroke="#0E1726" stroke-width="4" stroke-linecap="round"/><polygon points="188,67 202,75 188,83" fill="#0E1726"/>
 <circle cx="256" cy="75" r="40" fill="#FFFFFF" stroke="#0E1726" stroke-width="5"/>
 <path d="M256,52 L256,75 L272,86" fill="none" stroke="#0E1726" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -116,9 +117,9 @@
 </svg>
 </div>
 <div class="card-body">
-<div class="kicker kicker-sm">HOLD, THEN RELEASE</div>
+<div class="kicker kicker-sm">HOLD WHILE ON</div>
 <h3 class="card-title">Shut down</h3>
-<p class="card-text">Ends any recording, shuts the Pi down cleanly, and cuts power 15 seconds later.</p>
+<p class="card-text">Ends any recording, shuts the Pi down cleanly, and cuts power 15 seconds later. The button pulses amber until it goes dark.</p>
 </div>
 </div>
 </div>

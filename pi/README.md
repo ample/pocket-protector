@@ -18,7 +18,9 @@ The Raspberry Pi listens for control pulses from the [controller](../controller/
 
 - **Mic:** INMP441 I2S MEMS mic, driven by the `googlevoicehat-soundcard` overlay. It appears as ALSA card `sndrpigooglevoi`; check with `arecord -l`.
 - **Control input:** physical pin 10 (BCM GPIO15), with an internal pull-up, receiving open-drain LOW pulses from the ESP32.
-- **Recording LED:** BCM GPIO27.
+- **Status outputs to the ESP32** (which drives the button LED):
+  - Physical pin 13 (BCM GPIO27): HIGH while recording.
+  - Physical pin 11 (BCM GPIO17): HIGH while `recorder.py` is running and ready. It drops when a shutdown starts or the service stops.
 
 | Pulse length | Meaning |
 |---|---|

@@ -33,7 +33,7 @@
 <div class="stack" style="--gap: 22px">
 <div class="pill pill-mono">STEP 01 OF 04</div>
 <h1 class="display">Build the hardware</h1>
-<p class="lede">Print the case, make three connections to the ESP32, and flash the controller. When you're done, one button powers the Pi on, starts recordings and shuts everything down.</p>
+<p class="lede">Print the case, wire the button and the Pi to the ESP32, and flash the controller. When you're done, one button powers the Pi on, starts recordings and shuts everything down.</p>
 <nav class="step-nav" aria-label="Build steps">
 <a href="hardware.html" aria-current="step">01 · Hardware</a>
 <a href="pi.html">02 · Raspberry Pi</a>
@@ -171,7 +171,7 @@
 </div>
 <div class="box box-sm callout-warn">
 <div class="label">Pi-side wiring</div>
-<p class="small" style="color: inherit">INMP441 mic to the Pi's I2S pins, recording LED to BCM GPIO27. [ADD MIC PIN MAP]</p>
+<p class="small" style="color: inherit">INMP441 mic to the Pi's I2S pins. Pi GPIO27 (recording) to ESP32 GPIO 7 and Pi GPIO17 (ready) to ESP32 GPIO 10. Button LED data to ESP32 GPIO 6 via 330 Ω, VDD (black wire) to battery +. [ADD MIC PIN MAP]</p>
 </div>
 </div>
 </div>
@@ -198,9 +198,10 @@
 <li>Open <code>controller/esp32_controller/esp32_controller.ino</code> in the Arduino IDE. The folder name must match the sketch.</li>
 <li>Board: <span class="strong">ESP32C3 Dev Module</span> (esp32 core by Espressif).</li>
 <li>Turn on <span class="strong">USB CDC On Boot</span> for serial output.</li>
+<li>Install the <span class="strong">Adafruit NeoPixel</span> library.</li>
 <li>Upload, then open the Serial Monitor at 115200 baud.</li>
 </ol>
-<p class="callout callout-note"><span><span class="strong">Tune the feel:</span> debounce, click window, long-press threshold and pulse lengths are constants at the top of the sketch.</span></p>
+<p class="callout callout-note"><span><span class="strong">Tune the feel:</span> debounce, hold threshold, pulse lengths and LED colours are constants at the top of the sketch.</span></p>
 </div>
 </div>
 </section>
@@ -225,25 +226,26 @@
 </div>
 <div class="card">
 <div class="card-media" style="padding: 16px 20px">
-<svg viewBox="0 0 320 160" width="100%" role="img" aria-label="Three presses tap the PowerBoost K pin">
-<circle cx="110" cy="44" r="19" fill="#1766E8" stroke="#0E1726" stroke-width="4"/><circle cx="160" cy="44" r="19" fill="#1766E8" stroke="#0E1726" stroke-width="4"/><circle cx="210" cy="44" r="19" fill="#1766E8" stroke="#0E1726" stroke-width="4"/>
+<svg viewBox="0 0 320 160" width="100%" role="img" aria-label="Holding 3 seconds while off taps the PowerBoost K pin">
+<rect x="96" y="22" width="128" height="44" rx="22" fill="#1766E8" stroke="#0E1726" stroke-width="4"/>
+<text x="160" y="50" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="14" font-weight="600" fill="#FFFFFF">hold 3 s</text>
 <path d="M20,100 L150,100 L150,132 L170,132 L170,100 L300,100" fill="none" stroke="#0E1726" stroke-width="4" stroke-linejoin="round"/>
 <text x="160" y="154" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600" fill="#0F4FB8">tap K pin → 5V on</text>
 </svg>
 </div>
-<div class="card-body" style="padding: 22px 24px; gap: 6px"><h3 class="card-title card-title-sm">Triple click</h3><p class="small">Powers the Pi on.</p></div>
+<div class="card-body" style="padding: 22px 24px; gap: 6px"><h3 class="card-title card-title-sm">Hold while off</h3><p class="small">Powers the Pi on. Amber pulse, then green.</p></div>
 </div>
 <div class="card">
 <div class="card-media" style="padding: 16px 20px">
-<svg viewBox="0 0 320 160" width="100%" role="img" aria-label="Holding 2.5 seconds sends a 1200 millisecond shutdown pulse, then power is cut 15 seconds later">
+<svg viewBox="0 0 320 160" width="100%" role="img" aria-label="Holding 3 seconds while on sends a 1200 millisecond shutdown pulse, then power is cut 15 seconds later">
 <rect x="96" y="22" width="128" height="44" rx="22" fill="#1766E8" stroke="#0E1726" stroke-width="4"/>
-<text x="160" y="50" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="14" font-weight="600" fill="#FFFFFF">hold 2.5 s</text>
+<text x="160" y="50" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="14" font-weight="600" fill="#FFFFFF">hold 3 s</text>
 <path d="M20,100 L50,100 L50,132 L150,132 L150,100 L220,100" fill="none" stroke="#0E1726" stroke-width="4" stroke-linejoin="round"/>
 <path d="M220,100 L300,100" fill="none" stroke="#0E1726" stroke-width="4" stroke-dasharray="6 6"/>
 <text x="160" y="154" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600" fill="#0F4FB8">1200 ms → wait 15 s → 5V off</text>
 </svg>
 </div>
-<div class="card-body" style="padding: 22px 24px; gap: 6px"><h3 class="card-title card-title-sm">Long press</h3><p class="small">Fires on release. Shuts the Pi down cleanly, then cuts power.</p></div>
+<div class="card-body" style="padding: 22px 24px; gap: 6px"><h3 class="card-title card-title-sm">Hold while on</h3><p class="small">Fires at 3 s. Shuts the Pi down cleanly, then cuts power. Amber pulse, then dark.</p></div>
 </div>
 </div>
 </div>
