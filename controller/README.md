@@ -8,9 +8,9 @@ An always-on ESP32-C3 Super Mini reads one momentary button with a built-in RGB 
 |---|---|
 | Hold 3 s while off | Tap the PowerBoost K pin: power the Pi on |
 | Hold 3 s while on | 1200 ms pulse to the Pi (shutdown), wait 15 s, double-tap K to cut 5V |
-| Single click while ready | 150 ms LOW pulse to the Pi: toggle recording |
+| Single click | 150 ms LOW pulse to the Pi: toggle recording |
 
-Holds fire at 3 s while the button is still down, so the LED turns amber before you let go. Clicks while the Pi is off, booting or shutting down are ignored. The Pi distinguishes record and shutdown requests by pulse length.
+Holds fire at 3 s while the button is still down, so the LED turns amber before you let go. Clicks are ignored only while shutting down. They aren't gated on READY, so recording still works if the READY line is missing. A pulse sent before the Pi is listening does nothing. The Pi distinguishes record and shutdown requests by pulse length.
 
 ## LED
 
@@ -20,6 +20,8 @@ Holds fire at 3 s while the button is still down, so the LED turns amber before 
 | Booting (K tapped, waiting for the Pi's READY line) | Pulsing amber |
 | Ready | Green |
 | Recording (Pi's RECORDING line high) | Red |
+
+On reset the LED flashes red, green, blue. If it stays dark, check the LED's VDD, GND and DIN wiring. If the colours come out in the wrong order, change `NEO_GRB` in the sketch.
 | Shutting down (until 5V is cut) | Pulsing amber |
 
 If READY drops for more than 2 s while the Pi is up (a service restart, or a shutdown over SSH), the LED goes back to pulsing amber until READY returns.

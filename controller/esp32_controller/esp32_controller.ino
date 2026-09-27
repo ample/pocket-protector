@@ -181,8 +181,11 @@ void onHold() {
 
 
 void onClick() {
-  if (state != READY) {
-    Serial.printf("Click ignored in %s.\n", stateName(state));
+  // Don't gate on READY: if the Pi's READY line never arrives (old
+  // recorder.py, loose wire) clicks would be dropped forever. A pulse
+  // into a Pi that isn't listening yet is harmless.
+  if (state == SHUTTING_DOWN) {
+    Serial.println("Click ignored while shutting down.");
     return;
   }
 
@@ -224,11 +227,13 @@ void updateButton() {
 
 void updateState() {
   bool piReady = (digitalRead(PI_READY_PIN) == HIGH);
+  bool piRecording = (digitalRead(PI_RECORDING_PIN) == HIGH);
   unsigned long now = millis();
 
   switch (state) {
     case BOOTING:
-      if (piReady) {
+      // RECORDING going high also proves the Pi is up.
+      if (piReady || piRecording) {
         setState(READY);
       }
       break;
@@ -236,7 +241,7 @@ void updateState() {
     case READY:
       // The Pi stopped reporting ready without being asked to shut down
       // (service restart, shutdown over SSH). Show busy until it's back.
-      if (piReady) {
+      if (piReady || piRecording) {
         readyLowSince = 0;
       } else if (readyLowSince == 0) {
         readyLowSince = now;
@@ -300,6 +305,20 @@ void updateLed() {
 }
 
 
+void ledSelfTest() {
+  // Red, green, blue at boot. If none show, the LED's power, ground or
+  // DIN wiring is wrong; if colours are swapped, change NEO_GRB.
+  const uint32_t colors[] = { 0xFF0000, 0x00FF00, 0x0000FF };
+  for (uint32_t c : colors) {
+    pixel.setPixelColor(0, c);
+    pixel.show();
+    delay(300);
+  }
+  pixel.clear();
+  pixel.show();
+}
+
+
 void setup() {
   Serial.begin(115200);
 
@@ -318,7 +337,8 @@ void setup() {
   pixel.clear();
   pixel.show();
 
-  delay(300);
+  Serial.println("LED self-test: red, green, blue...");
+  ledSelfTest();
 
   // If the ESP32 resets while the Pi is up, pick up where it left off.
   state = digitalRead(PI_READY_PIN) == HIGH ? READY : OFF;
@@ -327,8 +347,10 @@ void setup() {
   Serial.println();
   Serial.println("ESP32 recorder controller started.");
   Serial.println("Hold 3 s     = power on / shut down");
-  Serial.println("Single click = record toggle (when ready)");
+  Serial.println("Single click = record toggle");
   Serial.printf("Initial state: %s\n", stateName(state));
+  Serial.printf("Pi READY=%d RECORDING=%d\n",
+                digitalRead(PI_READY_PIN), digitalRead(PI_RECORDING_PIN));
 }
 
 
