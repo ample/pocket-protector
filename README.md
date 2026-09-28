@@ -1,7 +1,5 @@
 <center><img alt="logo" src="https://github.com/user-attachments/assets/b5c26b24-6dae-424b-b834-7932a682eeb9" /></center>
 
-# What is this?
-
 Pocket Protector is a privacy-first DIY push-button voice recorder with searchable, fully local memory. Press a button to record, and the audio is transcribed, indexed, and made queryable with a local LLM. Nothing leaves your network.
 
 ```
