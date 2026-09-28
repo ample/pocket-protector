@@ -1,6 +1,8 @@
-# Transcriber
+<center><img alt="logo" src="https://github.com/user-attachments/assets/b5c26b24-6dae-424b-b834-7932a682eeb9" /></center>
 
-A push-button voice recorder with searchable, fully local memory. Press a button to record, and the audio is transcribed, indexed, and made queryable with a local LLM. Nothing leaves your machines.
+# What is this?
+
+Pocket Protector is a privacy-first DIY push-button voice recorder with searchable, fully local memory. Press a button to record, and the audio is transcribed, indexed, and made queryable with a local LLM. Nothing leaves your network.
 
 ```
 [Button] → ESP32-C3 → Raspberry Pi (records chunks) → recordings/<session>/ on Mac
@@ -24,6 +26,7 @@ The repo is organized by where the code runs.
 | [`mac/`](mac/) | Mac (Apple Silicon) | Transcribes, indexes, and answers questions |
 | [`hardware/`](hardware/) | 3D printer | Enclosure files and parts list |
 | [`site/`](site/) | Any static host | Setup microsite: a step-by-step build guide |
+
 
 Each directory has its own README with setup steps.
 
