@@ -69,10 +69,10 @@
 <div class="stack">
 <div class="kicker">3.1 · CLONE</div>
 <h2 class="h2 h2-md">Clone to the expected path</h2>
-<p class="body">The scripts look for <code>~/Workspace/transcriber</code>, which also matches the Pi's <code>MAC_RECORDINGS_DIR</code>. Clone there and there's nothing to edit.</p>
+<p class="body">The scripts use <code>recordings/</code> and <code>chroma/</code> at the repo root. Clone to <code>~/Workspace/transcriber</code> to match the Pi's default <code>MAC_RECORDINGS_DIR</code>.</p>
 <pre class="code" style="font-size: 14px">git clone git@github.com:ample/pocket-protector.git \
   ~/Workspace/transcriber</pre>
-<p class="callout callout-warn"><span><span style="font-weight: 600">Somewhere else?</span> Edit <code>BASE_DIR</code> in <code>processor.py</code>, <code>DB_DIR</code> in <code>ask.py</code>, and the Pi's <code>.env</code>.</span></p>
+<p class="callout callout-warn"><span><span style="font-weight: 600">Somewhere else?</span> Set <code>MAC_RECORDINGS_DIR</code> in the Pi's <code>.env</code> to your clone's <code>recordings/</code> path.</span></p>
 </div>
 <svg viewBox="0 0 480 310" width="100%" role="img" aria-label="Folder tree of ~/Workspace/transcriber with controller, pi, mac, recordings and chroma folders">
 <rect x="4" y="4" width="472" height="302" rx="22" fill="#F4F7FC" stroke="#0E1726" stroke-width="3"/>

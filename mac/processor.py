@@ -28,7 +28,7 @@ torch.serialization.add_safe_globals([torch.torch_version.TorchVersion, Specific
 WHISPER_MODEL = "mlx-community/whisper-large-v3-turbo"
 DIARIZATION_MODEL = "pyannote/speaker-diarization-3.1"
 EMBED_MODEL = "nomic-embed-text"
-BASE_DIR = Path.home() / "Workspace/transcriber"
+BASE_DIR = Path(__file__).resolve().parent.parent  # project root
 RECORDINGS_DIR = BASE_DIR / "recordings"
 DB_DIR = BASE_DIR / "chroma"
 POLL_SECONDS = 5
