@@ -4,18 +4,19 @@
 Stage 1 (transcribe): DONE, no TRANSCRIBED -> Whisper (MLX) + pyannote diarization
                       -> transcript.txt + segments.json (with speaker labels)
 Stage 2 (index):      TRANSCRIBED, no INDEXED -> chunk -> embed (Ollama) -> Chroma vector DB
+                      Skipped when SKIP_INDEXING=1; sessions stay at TRANSCRIBED and
+                      get indexed on a later run without it.
 
 Nothing leaves this machine.
 """
 
 import json
+import os
 import subprocess
 import time
 from pathlib import Path
 
-import chromadb
 import mlx_whisper
-import ollama
 import soundfile as sf
 import torch
 from pyannote.audio import Pipeline
@@ -33,9 +34,15 @@ RECORDINGS_DIR = BASE_DIR / "recordings"
 DB_DIR = BASE_DIR / "chroma"
 POLL_SECONDS = 5
 CHUNK_WORDS = 180  # roughly a minute of speech per searchable chunk
+SKIP_INDEXING = os.environ.get("SKIP_INDEXING", "").lower() in ("1", "true", "yes")
 
-db = chromadb.PersistentClient(path=str(DB_DIR))
-collection = db.get_or_create_collection("sessions")
+if not SKIP_INDEXING:
+    # Imported here so transcription-only runs need neither package nor Ollama.
+    import chromadb
+    import ollama
+
+    db = chromadb.PersistentClient(path=str(DB_DIR))
+    collection = db.get_or_create_collection("sessions")
 diarizer = None  # loaded in main(); slow to import and needs the HF model cached
 
 
@@ -191,9 +198,10 @@ def index(session: Path) -> None:
 def main() -> None:
     global diarizer
     diarizer = load_diarizer()
+    embed = "off (SKIP_INDEXING)" if SKIP_INDEXING else EMBED_MODEL
     print(
         f"Watching {RECORDINGS_DIR} | whisper={WHISPER_MODEL} | "
-        f"diarization={DIARIZATION_MODEL} | embed={EMBED_MODEL}",
+        f"diarization={DIARIZATION_MODEL} | embed={embed}",
         flush=True,
     )
     while True:
@@ -204,7 +212,11 @@ def main() -> None:
                 try:
                     if (session / "DONE").exists() and not (session / "TRANSCRIBED").exists():
                         transcribe(session)
-                    if (session / "TRANSCRIBED").exists() and not (session / "INDEXED").exists():
+                    if (
+                        not SKIP_INDEXING
+                        and (session / "TRANSCRIBED").exists()
+                        and not (session / "INDEXED").exists()
+                    ):
                         index(session)
                 except subprocess.CalledProcessError as exc:
                     print(f"ERROR {session.name}: ffmpeg: {exc.stderr[-300:]} (will retry)", flush=True)

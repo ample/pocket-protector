@@ -38,6 +38,16 @@ rm recordings/*/TRANSCRIBED recordings/*/INDEXED
 python mac/processor.py
 ```
 
+### Transcription only
+
+Set `SKIP_INDEXING=1` to stop after stage 1. You get `transcript.txt` and `segments.json`, with no Ollama, no Chroma, and no `chroma/` folder. You can skip the two `ollama pull` steps in Setup.
+
+```bash
+SKIP_INDEXING=1 python mac/processor.py
+```
+
+Sessions stay at `TRANSCRIBED`. Run without the variable later and they'll be indexed then.
+
 ## ask.py
 
 Embeds the question and retrieves the 6 nearest chunks. `llama3.1:8b` then answers from those excerpts only, citing session and `m:ss` ranges.
