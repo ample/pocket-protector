@@ -5,3 +5,5 @@ ollama==0.6.2
 pyannote.audio==3.4.0
 soundfile==0.13.1
 speechbrain==1.0.3  # 1.1.x lazy imports crash pyannote model loading on Python 3.9
+torch==2.8.0  # torchaudio>=2.9 removed AudioMetaData, which pyannote.audio 3.x imports
+torchaudio==2.8.0

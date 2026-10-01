@@ -19,7 +19,7 @@ Speaker labeling uses [`pyannote/speaker-diarization-3.1`](https://huggingface.c
 1. Accept the terms on [speaker-diarization-3.1](https://huggingface.co/pyannote/speaker-diarization-3.1) and [segmentation-3.0](https://huggingface.co/pyannote/segmentation-3.0).
 2. Create a read token at huggingface.co/settings/tokens, then run `huggingface-cli login` (or export `HF_TOKEN`) before you first start `processor.py`.
 
-Paths are hardcoded to `~/Workspace/transcriber` (`BASE_DIR` in `processor.py`, `DB_DIR` in `ask.py`). Edit them if you cloned the repo elsewhere.
+`recordings/` and `chroma/` live at the project root, wherever you cloned the repo. The Pi's `MAC_RECORDINGS_DIR` must point at that `recordings/` folder.
 
 ## processor.py
 
@@ -37,6 +37,16 @@ rm recordings/*/TRANSCRIBED recordings/*/INDEXED
 ```bash
 python mac/processor.py
 ```
+
+### Transcription only
+
+Set `SKIP_INDEXING=1` to stop after stage 1. You get `transcript.txt` and `segments.json`, with no Ollama, no Chroma, and no `chroma/` folder. You can skip the two `ollama pull` steps in Setup.
+
+```bash
+SKIP_INDEXING=1 python mac/processor.py
+```
+
+Sessions stay at `TRANSCRIBED`. Run without the variable later and they'll be indexed then.
 
 ## ask.py
 

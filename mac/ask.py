@@ -13,7 +13,7 @@ import ollama
 
 CHAT_MODEL = "llama3.1:8b"
 EMBED_MODEL = "nomic-embed-text"
-DB_DIR = Path.home() / "Workspace/transcriber/chroma"
+DB_DIR = Path(__file__).resolve().parent.parent / "chroma"
 TOP_K = 6
 
 
