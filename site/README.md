@@ -37,4 +37,4 @@ Placeholders still to fill in:
 
 ## Share previews
 
-Each page has Open Graph and Twitter card tags pointing at `https://pocket-protector.netlify.app`. If the site moves to another domain, update the `canonical`, `og:url`, `og:image` and `twitter:image` URLs in every page.
+Each page has Open Graph and Twitter card tags pointing at `https://pocket-protector.diy`. If the site moves to another domain, update the `canonical`, `og:url`, `og:image` and `twitter:image` URLs in every page.
