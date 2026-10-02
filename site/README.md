@@ -1,6 +1,6 @@
 # Setup microsite
 
-A static, five-page build guide for Pocket Protector: overview, hardware, Raspberry Pi, Mac, and record & ask. Plain HTML and one stylesheet, with no build step and no JavaScript.
+A static, five-page build guide for Pocket Protector: overview, hardware, Raspberry Pi, Mac, and record & ask. Plain HTML, one stylesheet and one small script for the mobile menu, with no build step.
 
 | File | Page |
 |---|---|
@@ -10,7 +10,9 @@ A static, five-page build guide for Pocket Protector: overview, hardware, Raspbe
 | `mac.html` | 03 · Clone, models, pyannote unlock, processor |
 | `use.html` | 04 · Gestures, session lifecycle, `ask.py`, troubleshooting |
 | `assets/styles.css` | Shared styles and color tokens |
+| `assets/nav.js` | Mobile menu toggle (the nav falls back to a scrolling row without it) |
 | `assets/logo.png` | Wordmark |
+| `assets/og-image.png` | 1200×630 social share image |
 
 ## Preview
 
@@ -32,3 +34,7 @@ Placeholders still to fill in:
 
 - `[PI MODEL]` in `index.html` (the parts list)
 - `[ADD MIC PIN MAP]` in `hardware.html` (Pi-side wiring)
+
+## Share previews
+
+Each page has Open Graph and Twitter card tags pointing at `https://pocket-protector.diy`. If the site moves to another domain, update the `canonical`, `og:url`, `og:image` and `twitter:image` URLs in every page.

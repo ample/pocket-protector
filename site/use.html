@@ -5,18 +5,38 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pocket Protector — Record and ask</title>
 <meta name="description" content="Step 4: the three button gestures, what happens to a session after you stop, and how to ask your recordings questions.">
-<link rel="icon" href="assets/logo.png">
+<link rel="canonical" href="https://pocket-protector.diy/use.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pocket Protector">
+<meta property="og:title" content="Pocket Protector — Record and ask">
+<meta property="og:description" content="Step 4: the three button gestures, what happens to a session after you stop, and how to ask your recordings questions.">
+<meta property="og:url" content="https://pocket-protector.diy/use.html">
+<meta property="og:image" content="https://pocket-protector.diy/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Pocket Protector logo with the tagline: Press a button. Remember everything.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pocket Protector — Record and ask">
+<meta name="twitter:description" content="Step 4: the three button gestures, what happens to a session after you stop, and how to ask your recordings questions.">
+<meta name="twitter:image" content="https://pocket-protector.diy/assets/og-image.png">
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=Sora:wght@600;700;800&amp;display=swap">
 <link rel="stylesheet" href="assets/styles.css">
+<script src="assets/nav.js" defer></script>
 </head>
 <body>
 
 <header class="site-header">
 <div class="wrap">
 <a class="logo" href="index.html"><img src="assets/logo.png" alt="Pocket Protector home" width="173" height="52"></a>
-<nav class="nav" aria-label="Primary">
+<button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" hidden>
+<span class="visually-hidden">Menu</span><span class="nav-toggle-bars" aria-hidden="true"></span>
+</button>
+<nav class="nav" id="primary-nav" aria-label="Primary">
 <a href="hardware.html">Hardware</a>
 <a href="pi.html">Raspberry Pi</a>
 <a href="mac.html">Mac</a>
