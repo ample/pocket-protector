@@ -78,6 +78,20 @@ h1, h2, h3, p, ul, ol, pre { margin: 0; }
 .nav a:hover { background: var(--surface); color: var(--ink); }
 .nav a[aria-current="page"] { font-weight: 600; color: var(--blue-dark); background: var(--blue-chip); }
 .nav .nav-cta { margin-left: 12px; }
+.nav a.btn-primary,
+.nav a.btn-primary:hover { color: #FFFFFF; }
+.nav a.btn-primary:hover { background: var(--blue-dark); }
+
+.nav-toggle { display: none; }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
 
 @media (max-width: 900px) {
   .site-header .wrap { padding-block: 12px; }
@@ -91,6 +105,59 @@ h1, h2, h3, p, ul, ol, pre { margin: 0; }
     scrollbar-width: none;
   }
   .nav .nav-cta { margin-left: auto; }
+
+  /* With nav.js loaded, the row becomes a menu behind a toggle button. */
+  .has-toggle .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: 2px solid var(--ink);
+    border-radius: 10px;
+    background: #FFFFFF;
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .has-toggle .nav-toggle:hover { background: var(--surface); }
+  .nav-toggle-bars,
+  .nav-toggle-bars::before,
+  .nav-toggle-bars::after {
+    display: block;
+    width: 20px;
+    height: 2px;
+    border-radius: 1px;
+    background: currentColor;
+    transition: transform 0.15s ease, background-color 0.15s ease;
+  }
+  .nav-toggle-bars { position: relative; }
+  .nav-toggle-bars::before,
+  .nav-toggle-bars::after { content: ''; position: absolute; left: 0; }
+  .nav-toggle-bars::before { top: -6px; }
+  .nav-toggle-bars::after { top: 6px; }
+  .is-open .nav-toggle-bars { background: transparent; }
+  .is-open .nav-toggle-bars::before { transform: translateY(6px) rotate(45deg); }
+  .is-open .nav-toggle-bars::after { transform: translateY(-6px) rotate(-45deg); }
+
+  .has-toggle .nav {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    overflow: visible;
+    padding-block: 8px 12px;
+    border-top: 1px solid var(--line);
+  }
+  .has-toggle.is-open .nav { display: flex; }
+  .has-toggle .nav a { padding: 14px; font-size: 16px; }
+  .has-toggle .nav .nav-cta { margin: 8px 0 0; text-align: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-toggle-bars,
+  .nav-toggle-bars::before,
+  .nav-toggle-bars::after { transition: none; }
 }
 
 /* ---------- Buttons ---------- */
